@@ -1,20 +1,16 @@
 FROM ruby:2.6.5
-RUN apt-get update -qq && apt-get upgrade -qqy
-RUN apt-get -qqy install cmake
-RUN gem install bundler -v 2.0.2
-RUN gem update --system
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -qq && apt-get install -y build-essential nodejs yarn
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-ADD .ruby-version $APP_HOME/
+RUN gem install bundler:2.1.2
 ADD Gemfile* $APP_HOME/
-
-ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile BUNDLE_JOBS=4 BUNDLE_WITHOUT=production:staging
-
 RUN bundle install
 
-COPY . $APP_HOME
-
+ADD . $APP_HOME
+RUN yarn install --check-files
 CMD ["echo", "Commands: `bundle exec puma`]

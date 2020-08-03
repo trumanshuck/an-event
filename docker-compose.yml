@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgrespassword
     ports: ["5432:5432"]
-  app: &app-common
+  app:
     build: "."
     command: bin/wait-for-it.sh db:5432 -- bundle exec puma
     environment:
