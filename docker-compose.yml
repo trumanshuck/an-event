@@ -1,0 +1,18 @@
+---
+version: '3.4'
+services:
+  db:
+    image: postgres:11.5
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
+    ports: ["5432:5432"]
+  app:
+    build: "."
+    command: bin/wait-for-it.sh db:5432 -- bundle exec puma
+    environment:
+      DATABASE_URL: postgresql://postgres:postgrespassword@db
+      LOG_LEVEL: debug
+    links:
+    - db
+    volumes: [".:/app"]
+    ports: ["3000:3000"]
