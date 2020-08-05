@@ -4,5 +4,7 @@ class HomeController < ApplicationController
       "Hasn't this happened already?",
       "Catballs is extremely pleased."
     ]
+
+    @stops = Stop.all.order(from: :asc)
   end
 end

@@ -1,6 +1,11 @@
 <svg height='auto' width='100%'  fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 61.5">
   <g transform="translate(0, -20)">
-    <circle cx="0" cy="20" r="1" stroke="black" stroke-width="3" fill="red" />
+    <% @stops.each do |stop| %>
+      <circle cx="<%= lngx(@stops.first.lng) %>" cy="<%= laty(@stops.first.lat) %>" r="0.5" stroke="black" stroke-width="0" fill="black" />
+      <text text-anchor="middle" x="<%= lngx(@stops.first.lng) %>" y="<%= laty(@stops.first.lat) + 2 %>" class="font-sans" style="font-size: 2px">
+        <%= stop.name %>
+      </text>
+    <% end %>
     <g>
       <path d="M16.31338,22.90241h0.005H16.31338 M16.2503,22.50956c-0.25788,0.01956-0.71754,0.54666-0.4573,0.7664l0.08251,0.13752    c0.01933,0.0044,0.0367,0.00648,0.0523,0.00648c0.18838,0,0.11936-0.30213,0.14033-0.44718    c0.01037-0.07174,0.00204-0.18446,0.03024-0.24886C16.1415,22.62544,16.32686,22.70927,16.2503,22.50956L16.2503,22.50956z" />
     </g>

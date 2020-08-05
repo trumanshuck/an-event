@@ -3,4 +3,11 @@
 @import "tailwindcss/utilities";
 
 /*! purgecss start ignore */
+.tooltip .tooltip-text {
+  @apply invisible p-4 absolute z-50 inline-block ml-4 text-sm w-1/2 rounded-lg bg-gray-700 text-white;
+}
+
+.tooltip:hover .tooltip-text {
+  @apply visible;
+}
 /*! purgecss end ignore */
