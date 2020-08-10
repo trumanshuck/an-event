@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  from: 2020-08-09
+  to: 2020-08-09
+  lat: 9.99
+  lng: 9.99
+  slug: MyString
+
+two:
+  name: MyString
+  from: 2020-08-09
+  to: 2020-08-09
+  lat: 9.99
+  lng: 9.99
+  slug: MyString
