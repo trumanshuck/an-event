@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_032317) do
+ActiveRecord::Schema.define(version: 2020_08_10_040325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2020_08_10_032317) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "posts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.uuid "stop_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stop_id"], name: "index_posts_on_stop_id"
+  end
+
   create_table "stops", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.date "from"
@@ -50,4 +59,5 @@ ActiveRecord::Schema.define(version: 2020_08_10_032317) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "posts", "stops"
 end
