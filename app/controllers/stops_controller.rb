@@ -69,6 +69,6 @@ class StopsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stop_params
-      params.require(:stop).permit(:name, :from, :to, :lat, :lng, :slug)
+      params.require(:stop).permit(:name, :from, :to, :lat, :lng, :slug, :splash)
     end
 end
