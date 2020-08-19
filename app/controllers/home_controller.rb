@@ -2,7 +2,9 @@ class HomeController < ApplicationController
   def index
     @messages = [
       "Hasn't this happened already?",
-      "Your cat must be real excited."
+      "Catballs is extremely pleased."
     ]
+
+    @stops = Stop.all.order(from: :asc)
   end
 end
