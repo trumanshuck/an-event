@@ -5,6 +5,6 @@ class HomeController < ApplicationController
       "Catballs is extremely pleased."
     ]
 
-    @stops = Stop.all.order(from: :asc)
+    @stops = Stop.all.order(from: :desc)
   end
 end

@@ -64,7 +64,7 @@ class StopsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stop
-      @stop = Stop.find(params[:id])
+      @stop = Stop.find_by(slug: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
