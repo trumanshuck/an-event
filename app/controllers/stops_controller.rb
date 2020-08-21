@@ -10,6 +10,9 @@ class StopsController < ApplicationController
   # GET /stops/1
   # GET /stops/1.json
   def show
+    arel = Stop.arel_table
+    @prev = Stop.where(arel[:to].lt(@stop.to)).order(from: :desc)&.first
+    @next = Stop.where(arel[:to].gt(@stop.to)).order(from: :asc)&.first
   end
 
   # GET /stops/new
