@@ -12,7 +12,7 @@
     Posts
   </h3>
   <ul>
-    <% @stop.posts.each do |post| %>
+    <% @stop.posts.in_order.each do |post| %>
       <li>
         <%= link_to post.title, url_for(post) %>
       </li>
