@@ -4,12 +4,14 @@ class StopsController < ApplicationController
   # GET /stops
   # GET /stops.json
   def index
-    @stops = Stop.all
+    @stops = Stop.all.includes(:posts).order(from: :desc)
   end
 
   # GET /stops/1
   # GET /stops/1.json
   def show
+    @prev = Stop.previous(@stop)
+    @next = Stop.next(@stop)
   end
 
   # GET /stops/new
@@ -64,7 +66,7 @@ class StopsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stop
-      @stop = Stop.find(params[:id])
+      @stop = Stop.find_by(slug: params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,40 +1,29 @@
-<p id="notice"><%= notice %></p>
+<main>
+  <h1 class="text-6xl">
+    <%= @stop.name %>
+  </h1>
+  <h2 class="text-4xl">
+    <%= @stop.from.strftime("%B %-d, %Y") %> - <%= @stop.to.strftime("%B %-d, %Y") %>
+  </h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @stop.name %>
-</p>
-
-<p>
-  <strong>Name:</strong>
   <%= image_tag @stop.splash %>
-</p>
 
-
-<p>
-  <strong>From:</strong>
-  <%= @stop.from %>
-</p>
-
-<p>
-  <strong>To:</strong>
-  <%= @stop.to %>
-</p>
-
-<p>
-  <strong>Lat:</strong>
-  <%= @stop.lat %>
-</p>
-
-<p>
-  <strong>Lng:</strong>
-  <%= @stop.lng %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @stop.slug %>
-</p>
-
-<%= link_to 'Edit', edit_stop_path(@stop) %> |
-<%= link_to 'Back', stops_path %>
+  <h3 class="text-2xl mt-12">
+    Posts
+  </h3>
+  <ul>
+    <% @stop.posts.each do |post| %>
+      <li>
+        <%= link_to post.title, url_for(post) %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="flex flex-row justify-between mt-12">
+    <div>
+      <%= link_to_if @prev.present?, @prev&.name, url_for(@prev) %>
+    </div>
+    <div>
+      <%= link_to_if @next.present?, @next&.name, url_for(@next) %>
+    </div>
+  </div>
+</main>

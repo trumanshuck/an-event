@@ -10,6 +10,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @prev = previous_post
+    @next = next_post
   end
 
   # GET /posts/new
@@ -62,13 +64,33 @@ class PostsController < ApplicationController
   end
 
   private
+    def previous_post
+      at_same_stop = Post.previous(@post)
+      return at_same_stop if at_same_stop.present?
+
+      prev_stop = Stop.previous(@post.stop)
+      return if prev_stop.blank?
+
+      Post.last_at(prev_stop)
+    end
+
+    def next_post
+      at_same_stop = Post.next(@post)
+      return at_same_stop if at_same_stop.present?
+
+      next_stop = Stop.next(@post.stop)
+      return if next_stop.blank?
+
+      Post.first_at(next_stop)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by(slug: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :stop_id)
+      params.require(:post).permit(:title, :content, :stop_id, :slug)
     end
 end
