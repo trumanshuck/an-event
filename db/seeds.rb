@@ -6,92 +6,44 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Post.destroy_all
-Stop.destroy_all
-ActiveStorage::Attachment.all.each(&:purge)
-ActionText::RichText.all.each(&:purge)
-ActiveStorage::Blob.all.each(&:purge)
-
-Dir.glob("storage/*").each do |dir|
-  Dir.glob("#{dir}/*").each do |subdir|
-    FileUtils.rmdir(subdir)
-  end
-  FileUtils.rmdir(dir)
-end
-
-images = [
-  'chicago.jpeg',
-  'denver.jpeg',
-  'kc.jpeg',
-  'kc.jpeg',
+stop_configs = [
+  { name: "Chicago Start", lat: 41.8781, lng: -87.6298, image: "chicago.jpeg" },
+  { name: "Oklahoma City", lat: 35.4676, lng: -97.5164, image: "okc.jpeg" },
+  { name: "Flagstaff", lat: 35.1983, lng: -111.6513, image: "flagstaff.jpeg" },
+  { name: "Yosemite", lat: 37.8651, lng: -119.5383, image: "yosemite.jpeg" },
+  { name: "Sequoia", lat: 36.4864, lng: -118.5658, image: "sequoia.jpeg" },
+  { name: "Death Valley", lat: 36.5323, lng: -116.9325, image: "death-valley.jpeg" },
+  { name: "Grand Canyon", lat: 36.0544, lng: -112.1401, image: "grand-canyon.jpeg" },
+  { name: "Santa Fe", lat: 35.6870, lng: -105.9378, image: "santa-fe.jpeg" },
+  { name: "Tulsa", lat: 36.1540, lng: -95.9928, image: "tulsa.jpeg" },
+  { name: "St Louis", lat: 38.6270, lng: -90.1994, image: "st-louis.jpeg" },
+  { name: "Chicago End", lat: 41.8781, lng: -87.6298, image: "chicago.jpeg" },
 ]
 
-chicago = Stop.create!(
-  name: "Chicago",
-  from: 5.days.ago,
-  to: 4.days.ago,
-  lat: 41.8781,
-  lng: -87.6298,
-  slug: "home-sweet-home"
-)
-chicago.splash.attach(
-  io: File.open('db/seeds/chicago.jpeg'),
-  filename: 'chicago.jpeg',
-  content_type: 'application/jpeg',
-  identify: false
-)
+stops = stop_configs.map.with_index do |stop_config, i|
+  stop_config.merge!(
+    from: (20 - i).days.ago,
+    to: (19 - i).days.ago,
+    slug: stop_config[:name].parameterize
+  )
 
-kc = Stop.create!(
-  name: "Kansas City",
-  from: 4.days.ago,
-  to: 3.days.ago,
-  lat: 39.0997,
-  lng: -94.5786,
-  slug: "kansas-city"
-)
-kc.splash.attach(
-  io: File.open('db/seeds/kc.jpeg'),
-  filename: 'kc.jpeg',
-  content_type: 'application/jpeg',
-  identify: false
-)
+  stop = Stop.create!(stop_config.without(:image))
+  stop.splash.attach(
+    io: File.open("db/seeds/#{stop_config[:image]}"),
+    filename: stop_config[:image],
+    content_type: 'application/jpeg',
+    identify: false
+  )
 
-denver = Stop.create!(
-  name: "Denver",
-  from: 3.days.ago,
-  to: 2.days.ago,
-  lat: 39.7392,
-  lng: -104.9903,
-  slug: "denver"
-)
-denver.splash.attach(
-  io: File.open('db/seeds/denver.jpeg'),
-  filename: 'denver.jpeg',
-  content_type: 'application/jpeg',
-  identify: false
-)
+  stop
+end
 
-sf = Stop.create!(
-  name: "San Francisco",
-  from: 2.days.ago,
-  to: 1.days.ago,
-  lat: 37.7749,
-  lng: -122.4194,
-  slug: "san-francisco"
-)
-sf.splash.attach(
-  io: File.open('db/seeds/sf.jpeg'),
-  filename: 'sf.jpeg',
-  content_type: 'application/jpeg',
-  identify: false
-)
-
-[chicago, kc, denver, sf].each do |place|
-  2.times do |i|
+stops.each do |stop|
+  rand(1..4).times do |i|
     post = Post.create!(
-      stop: place,
-      title: "Here In #{place.name} #{i}",
-      slug: "#{place.name.parameterize}-#{i}"
+      stop: stop,
+      title: "Here In #{stop.name} #{i}",
+      slug: "#{stop.name.parameterize}-#{i}"
     )
 
     post.update!(content: %{
@@ -107,5 +59,5 @@ sf.splash.attach(
         </ul>
       }
     )
-end
+  end
 end
