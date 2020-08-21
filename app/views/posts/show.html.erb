@@ -3,7 +3,9 @@
     <%= @post.title %>
   </h1>
   <h2 class="text-4xl">
-    <%= @post.created_at.strftime("%B %-d, %Y") %> - <%= @post.stop.name %>
+    <%= link_to @post.stop.name, url_for(@post.stop), class: "underline" %>
+    -
+    <%= @post.created_at.strftime("%B %-d, %Y") %>
   </h2>
   <div class="mt-12">
     <%= @post.content %>
