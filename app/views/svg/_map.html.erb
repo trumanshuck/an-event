@@ -104,22 +104,18 @@
     <% end %>
 
     <% @stops.each do |stop| %>
-      <circle
-        cx="<%= lngx(stop.lng) %>"
-        cy="<%= laty(stop.lat) %>"
-        r="0.5"
-        stroke="black"
-        stroke-width="0"
-      />
-      <text
-        text-anchor="middle"
-        x="<%= lngx(stop.lng) %>"
-        y="<%= laty(stop.lat) + 2 %>"
-        class="font-sans text-black"
-        style="font-size: 2px"
-      >
-        <%= link_to stop.name, url_for(stop) %>
-      </text>
+      <%= link_to url_for(stop) do %>
+        <circle
+          cx="<%= lngx(stop.lng) %>"
+          cy="<%= laty(stop.lat) %>"
+          r="0.5"
+          stroke="black"
+          stroke-width="0"
+          class="text-indigo-700 fill-current"
+        >
+          <title><%= stop.name %></title>
+        </circle>
+      <% end %>
     <% end %>
   </g>
 </svg>
