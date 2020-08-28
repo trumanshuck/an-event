@@ -14,7 +14,12 @@
   <ul>
     <% @stop.posts.in_order.each do |post| %>
       <li>
-        <%= link_to post.title, url_for(post) %>
+        <div class="text-2xl">
+          <%= link_to post.title, url_for(post) %>
+        </div>
+        <div>
+          <%= post.description %>
+        </div>
       </li>
     <% end %>
   </ul>
