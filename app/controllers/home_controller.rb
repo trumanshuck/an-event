@@ -6,5 +6,6 @@ class HomeController < ApplicationController
     ]
 
     @stops = Stop.all.order(from: :desc)
+    @post = Post.in_order.first
   end
 end
