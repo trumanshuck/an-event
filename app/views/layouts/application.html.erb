@@ -10,7 +10,19 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="max-w-4xl mx-auto py-16">
-    <%= yield %>
+  <body class="max-w-4xl mx-auto">
+    <nav class="flex justify-between py-2">
+      <span>We're getting married</span>
+      <div class="flex justify-between">
+        <%= link_to "Map", "/", class: "mx-2" %>
+        <%= link_to "Stops", stops_url, class: "mx-2" %>
+        <%= link_to "Registry", stops_url, class: "mx-2" %>
+        <%= link_to "Email", stops_url, class: "mx-2" %>
+      </div>
+    </nav>
+
+    <main class="py-16">
+      <%= yield %>
+    </main>
   </body>
 </html>

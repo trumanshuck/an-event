@@ -6,14 +6,7 @@
 
   <% @stops.each_with_index do |stop, i| %>
     <% break if i == @stops.length - 1 %>
-    <line
-      x1="<%= lngx(stop.lng) %>"
-      y1="<%= laty(stop.lat) %>"
-      x2="<%= lngx(@stops[i + 1].lng) %>"
-      y2="<%= laty(@stops[i + 1].lat) %>"
-      opacity="0.5"
-      class="stroke-current text-indigo-700 stroke-1"
-    />
+    <%=raw arc(stop.lng, stop.lat, @stops[i + 1].lng, @stops[i + 1].lat) %>
   <% end %>
 
   <% @stops.each do |stop| %>

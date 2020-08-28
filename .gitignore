@@ -41,4 +41,4 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore OS Specific stuff.
-*/.DS_STORE
+**/.DS_STORE
