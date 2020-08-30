@@ -6,22 +6,13 @@
 
   <% @stops.each_with_index do |stop, i| %>
     <% break if i == @stops.length - 1 %>
-    <%=raw arc(stop.lng, stop.lat, @stops[i + 1].lng, @stops[i + 1].lat) %>
+    <% next if stop.to.future? %>
+
+    <%= raw arc(stop.lng, stop.lat, @stops[i + 1].lng, @stops[i + 1].lat) %>
   <% end %>
 
   <% @stops.each do |stop| %>
-    <%= link_to url_for(stop) do %>
-      <circle
-        cx="<%= lngx(stop.lng) %>"
-        cy="<%= laty(stop.lat) %>"
-        r="0.5"
-        stroke="black"
-        stroke-width="0"
-        class="text-indigo-700 fill-current"
-      >
-        <title><%= stop.name %></title>
-      </circle>
-    <% end %>
+    <%= raw stop_icon(stop) %>
   <% end %>
   </g>
 </svg>

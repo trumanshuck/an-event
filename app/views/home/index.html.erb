@@ -15,7 +15,7 @@
     Where we've been
   </h2>
   <div>
-    <% @stops.take(3).each do |stop| %>
+    <% @previous_stops.take(3).each do |stop| %>
      <%= link_to url_for(stop) do %>
         <%= render 'stops/banner', stop: stop %>
       <% end %>

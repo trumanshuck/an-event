@@ -23,8 +23,8 @@ stop_configs = [
 
 stops = stop_configs.map.with_index do |stop_config, i|
   stop_config.merge!(
-    from: (6 - i).days.ago,
-    to: (5 - i).days.ago,
+    from: (3 - i).days.ago,
+    to: (2 - i).days.ago,
     slug: stop_config[:name].parameterize
   )
 
