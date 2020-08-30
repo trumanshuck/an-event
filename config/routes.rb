@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
   resources :stops
-  resources :registry
+  resources :registry, only: [:index]
   root to: 'home#index'
 end

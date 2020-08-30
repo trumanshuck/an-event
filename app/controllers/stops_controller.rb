@@ -4,7 +4,7 @@ class StopsController < ApplicationController
   # GET /stops
   # GET /stops.json
   def index
-    @stops = Stop.all.includes(:posts).order(from: :desc)
+    @stops = Stop.past.includes(:posts).order(to: :asc)
   end
 
   # GET /stops/1

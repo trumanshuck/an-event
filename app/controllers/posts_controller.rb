@@ -65,6 +65,8 @@ class PostsController < ApplicationController
 
   private
     def previous_post
+      return if @post.blank?
+
       at_same_stop = Post.previous(@post)
       return at_same_stop if at_same_stop.present?
 
@@ -75,6 +77,8 @@ class PostsController < ApplicationController
     end
 
     def next_post
+      return if @post.blank?
+
       at_same_stop = Post.next(@post)
       return at_same_stop if at_same_stop.present?
 

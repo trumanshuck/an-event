@@ -9,10 +9,10 @@ class Stop < ApplicationRecord
   scope :past, -> {where(arel_table[:to].lteq(Date.today))}
 
   def self.previous(stop)
-    where(arel_table[:to].lt(stop.to)).order(from: :desc).first
+    past.where(arel_table[:to].lt(stop.to)).order(from: :desc).first
   end
 
   def self.next(stop)
-    where(arel_table[:to].gt(stop.to)).order(from: :asc).first
+    past.where(arel_table[:to].gt(stop.to)).order(from: :asc).first
   end
 end

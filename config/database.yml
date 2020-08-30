@@ -82,7 +82,7 @@ test:
 production:
   <<: *default
   database: an-event_production
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= Rails.application.credentials.database_url %>
 
 staging:
   <<: *default

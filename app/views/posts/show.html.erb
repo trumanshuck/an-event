@@ -1,4 +1,4 @@
-<main>
+<section>
   <h1 class="text-6xl font-title">
     <%= @post.title %>
   </h1>
@@ -21,4 +21,4 @@
       <%= link_to_if @next.present?, @next&.title, url_for(@next) %>
     </div>
   </div>
-</main>
+</section>
