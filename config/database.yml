@@ -82,6 +82,7 @@ test:
 production:
   <<: *default
   database: an-event_production
+  url: <%= ENV['DATABASE_URL'] %>
 
 staging:
   <<: *default
