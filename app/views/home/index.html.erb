@@ -1,17 +1,17 @@
 <section class="flex flex-col items-center content-center">
-  <h1 class="text-4xl font-semibold">
+  <h1 class="text-4xl font-semibold font-title">
     <%= @messages.sample %>
   </h1>
 
-  <div class="text-pink-500 stroke-current stroke-0 fill-current mt-12 w-11/12">
+  <div class="text-indigo-700 stroke-current stroke-0 fill-current mt-12 w-11/12">
     <%= render 'svg/map', stops: @stops %>
   </div>
 
-  <h2 class="text-2xl my-6">
+  <h2 class="text-2xl my-6 font">
     We're going on a road trip to get married in Yosemite on October 13th.  Click the stops above to follow along, or skip to our latest journal: <%= link_to @post.title, url_for(@post), class: "underline" %>.
   </h2>
 
-  <h2 class="text-4xl my-4">
+  <h2 class="text-4xl my-4 font-title">
     Where we've been
   </h2>
   <div>
