@@ -5,7 +5,8 @@ class HomeController < ApplicationController
       "Catballs is extremely pleased."
     ]
 
-    @stops = Stop.all.order(from: :desc)
+    @stops = Stop.order(from: :desc)
+    @previous_stops = Stop.past.order(from: :desc)
     @post = Post.in_order.first
   end
 end

@@ -44,4 +44,24 @@ module HomeHelper
       />
     }
   end
+
+  def stop_icon(stop)
+    if stop.name == "Yosemite" && stop.to.future?
+      render 'stop_icons/yosemite', stop: stop
+    elsif stop.name == "Yosemite" && stop.to.past?
+      link_to url_for(stop) do
+        render 'stop_icons/yosemite_visited', stop: stop
+      end
+    elsif stop.to.past?
+      link_to url_for(stop) do
+        render 'stop_icons/visited', stop: stop
+      end
+    elsif stop.to.today?
+      link_to url_for(stop) do
+        render 'stop_icons/today', stop: stop
+      end
+    else
+      render 'stop_icons/future', stop: stop
+    end
+  end
 end

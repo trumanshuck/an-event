@@ -6,6 +6,8 @@ class Stop < ApplicationRecord
 
   delegate :to_param, to: :slug
 
+  scope :past, -> {where(arel_table[:to].lteq(Date.today))}
+
   def self.previous(stop)
     where(arel_table[:to].lt(stop.to)).order(from: :desc).first
   end

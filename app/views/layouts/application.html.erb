@@ -7,16 +7,17 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Delius&family=Open+Sans&display=swap' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="max-w-4xl mx-auto">
-    <nav class="flex justify-between py-2">
-      <span>We're getting married</span>
+    <nav class="flex justify-between py-2 font-title">
+      <%= link_to "Carrie & Truman: A Wedding Sojourn", "/", class: "font-title font-bold" %>
       <div class="flex justify-between">
         <%= link_to "Map", "/", class: "mx-2" %>
         <%= link_to "Stops", stops_url, class: "mx-2" %>
-        <%= link_to "Registry", stops_url, class: "mx-2" %>
+        <%= link_to "Registry", registry_index_url, class: "mx-2" %>
         <%= link_to "Email", stops_url, class: "mx-2" %>
       </div>
     </nav>

@@ -9,7 +9,8 @@
 stop_configs = [
   { name: "Chicago Start", lat: 41.8781, lng: -87.6298, image: "chicago.jpeg" },
   { name: "Oklahoma City", lat: 35.4676, lng: -97.5164, image: "okc.jpeg" },
-  { name: "Flagstaff", lat: 35.1983, lng: -111.6513, image: "flagstaff.jpeg" },
+  { name: "Santa Fe", lat: 35.6870, lng: -105.9378, image: "santa-fe.jpeg" },
+  { name: "Las Vegas", lat: 36.1699, lng: -115.1398, image: "flagstaff.jpeg" },
   { name: "Yosemite", lat: 37.8651, lng: -119.5383, image: "yosemite.jpeg" },
   { name: "Sequoia", lat: 36.4864, lng: -118.5658, image: "sequoia.jpeg" },
   { name: "Death Valley", lat: 36.5323, lng: -116.9325, image: "death-valley.jpeg" },
@@ -22,8 +23,8 @@ stop_configs = [
 
 stops = stop_configs.map.with_index do |stop_config, i|
   stop_config.merge!(
-    from: (20 - i).days.ago,
-    to: (19 - i).days.ago,
+    from: (3 - i).days.ago,
+    to: (2 - i).days.ago,
     slug: stop_config[:name].parameterize
   )
 
