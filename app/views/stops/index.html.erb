@@ -1,4 +1,4 @@
-<div>
+<section>
   <% @stops.each do |stop| %>
    <%= link_to url_for(stop) do %>
       <%= render 'stops/banner', stop: stop %>
@@ -17,4 +17,4 @@
       <% end %>
     </ul>
   <% end %>
-</div>
+</section>

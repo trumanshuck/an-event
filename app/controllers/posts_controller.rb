@@ -1,11 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = Post.all
-  end
+  skip_before_action :authorized, only: [:show, :index]
 
   # GET /posts/1
   # GET /posts/1.json
@@ -65,6 +60,8 @@ class PostsController < ApplicationController
 
   private
     def previous_post
+      return if @post.blank?
+
       at_same_stop = Post.previous(@post)
       return at_same_stop if at_same_stop.present?
 
@@ -75,6 +72,8 @@ class PostsController < ApplicationController
     end
 
     def next_post
+      return if @post.blank?
+
       at_same_stop = Post.next(@post)
       return at_same_stop if at_same_stop.present?
 

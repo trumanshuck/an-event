@@ -6,9 +6,8 @@
 
   <% @stops.each_with_index do |stop, i| %>
     <% break if i == @stops.length - 1 %>
-    <% next if stop.to.future? %>
 
-    <%= raw arc(stop.lng, stop.lat, @stops[i + 1].lng, @stops[i + 1].lat) %>
+    <%= raw arc(stop, @stops[i + 1]) %>
   <% end %>
 
   <% @stops.each do |stop| %>

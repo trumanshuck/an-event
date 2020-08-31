@@ -19,11 +19,11 @@ module HomeHelper
   end
 
   # https://stackoverflow.com/a/31806074
-  def arc(lng1, lat1, lng2, lat2)
-    x1 = lngx(lng1)
-    y1 = laty(lat1)
-    x2 = lngx(lng2)
-    y2 = laty(lat2)
+  def arc(stop, next_stop)
+    x1 = lngx(stop.lng)
+    y1 = laty(stop.lat)
+    x2 = lngx(next_stop.lng)
+    y2 = laty(next_stop.lat)
 
     cx = (x1+x2) / 2
     cy = (y1+y2) / 2
@@ -34,13 +34,15 @@ module HomeHelper
     ex = cx + dy/dd * 5
     ey = cy - dx/dd * 5
 
+
+
     %{
       <path
         d="m #{x1} #{y1} Q #{ex} #{ey} #{x2} #{y2}"
         fill="none"
-        opacity="0.5"
+        opacity="#{stop.to.future? ? 0.2 : 1}"
         stroke-dasharray="1,1"
-        class="stroke-current text-indigo-700 stroke-1"
+        class="stroke-current text-indigo-400 stroke-1"
       />
     }
   end

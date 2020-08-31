@@ -1,10 +1,11 @@
 class StopsController < ApplicationController
   before_action :set_stop, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:show, :index]
 
   # GET /stops
   # GET /stops.json
   def index
-    @stops = Stop.all.includes(:posts).order(from: :desc)
+    @stops = Stop.past.includes(:posts).order(to: :asc)
   end
 
   # GET /stops/1
