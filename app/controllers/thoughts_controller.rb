@@ -1,4 +1,5 @@
 class ThoughtsController < ApplicationController
+  skip_before_action :authorized, only: [:index, :create]
   before_action :set_thought, only: [:show, :edit, :update, :destroy]
 
   # GET /thoughts
@@ -68,6 +69,6 @@ class ThoughtsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def thought_params
-      params.require(:thought).permit(:name)
+      params.require(:thought).permit(:name, :content)
     end
 end

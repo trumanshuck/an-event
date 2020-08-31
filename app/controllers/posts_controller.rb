@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:show, :index]
 
   # GET /posts/1
   # GET /posts/1.json
