@@ -5,6 +5,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts.json
   def index
     @thoughts = Thought.all
+    @thought = Thought.new
   end
 
   # GET /thoughts/1
@@ -28,11 +29,9 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to @thought, notice: 'Thought was successfully created.' }
-        format.json { render :show, status: :created, location: @thought }
+        format.html { redirect_to thoughts_url, notice: 'Thought was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @thought.errors, status: :unprocessable_entity }
+        format.html { render :index }
       end
     end
   end
