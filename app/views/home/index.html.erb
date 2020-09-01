@@ -1,4 +1,4 @@
-<section class="flex flex-col items-center content-center">
+<section class="flex flex-col">
   <h1 class="text-4xl font-semibold font-title">
     <%= @messages.sample %>
   </h1>
@@ -10,11 +10,19 @@
     <%= render 'svg/map', stops: @stops %>
   </div>
 
-  <h2 class="text-2xl my-6">
-    We're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops above to follow along, or poke around <%= link_to("where we've been", stops_path, class: "text-2xl underline text-teal-400") %>.
+  <h2 class="text-2xl mt-8">
+    Twenty-twenty marks ten years together, so we're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops above and follow along, or poke around <%= link_to("where we've been", stops_path, class: "text-2xl underline text-teal-400") %>.
   </h2>
 
-  <h2 class="text-2xl my-6">
+  <h2 class="text-2xl mt-4">
     Although we're going it alone, we'd love for you to <%= link_to("share some thoughts", thoughts_path, class: "text-2xl underline text-teal-400") %> that we can read during our ceremony.  Let's get together and celebrate soon.
+  </h2>
+
+  <h2 class="text-2xl mt-4">
+    Love,
+  </h2>
+
+  <h2 class="text-2xl font-title">
+    Carrie & Truman
   </h2>
 </section>
