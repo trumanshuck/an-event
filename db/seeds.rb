@@ -43,7 +43,7 @@ stops.each do |stop|
   rand(1..4).times do |i|
     post = Post.create!(
       stop: stop,
-      title: "Post \##{i} in #{stop.name}",
+      title: "Hey, read this post \##{i} in #{stop.name}",
       description: "Here's a description for stop #{stop.name} post #{i}",
       slug: "#{stop.name.parameterize}-#{i}"
     )
