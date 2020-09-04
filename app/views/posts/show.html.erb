@@ -1,18 +1,22 @@
-<section>
-  <h1 class="text-6xl font-title">
-    <%= @post.title %>
-  </h1>
+<article class="prose max-w-4xl mx-auto">
+  <header>
+    <h1 class="text-6xl font-title">
+      <%= @post.title %>
+    </h1>
+  </header>
+
   <h2 class="text-4xl font-title">
     <%= link_to @post.stop.name, url_for(@post.stop), class: "underline" %>
     -
     <%= @post.created_at.strftime("%B %-d, %Y") %>
   </h2>
-  <div>
+  <p class="">
     <%= @post.description %>
-  </div>
-  <div class="mt-12">
+  </p>
+  <article class="mt-12 prose">
     <%= @post.content %>
-  </div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis laboriosam, beatae veniam pariatur eligendi labore expedita accusamus! Exercitationem dolor nulla magnam porro totam provident minus excepturi amet tempora placeat!
+  </article>
   <div class="flex flex-row justify-between mt-12">
     <div>
       <%= link_to_if @prev.present?, @prev&.title, url_for(@prev) %>
@@ -21,4 +25,4 @@
       <%= link_to_if @next.present?, @next&.title, url_for(@next) %>
     </div>
   </div>
-</section>
+</article>
