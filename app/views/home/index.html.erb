@@ -3,19 +3,18 @@
     <h1 class="text-4xl font-bold">
       <%= @messages.sample %>
     </h1>
+    <h2 class="text-xl md:text-2xl my-6">
+      Follow our trip: <%= link_to @post.title, url_for(@post), class: "underline text-teal-400" %>
+    </h2>
 
     <p class="text-xl md:text-2xl my-6">
-      We're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops above to follow along, or poke around <%= link_to("where we've been", stops_path, class: "underline text-teal-400") %>.
+      Twenty-twenty marks ten years together, so we're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops above and follow along, or poke around <%= link_to("where we've been", stops_path, class: "text-2xl underline text-teal-400") %>.
     </p>
 
     <p class="text-xl md:text-2xl my-6">
       Although we're going it alone, we'd love for you to <%= link_to("share some thoughts", thoughts_path, class: "underline text-teal-400") %> that we can read during our ceremony.  Let's get together and celebrate soon.
     </p>
 
-    <p class="text-xl md:text-2xl my-6">
-      Follow our trip: <%= link_to @post.title, url_for(@post), class: "underline text-teal-400" %>
-    </p>
-  </div>
 
   <div class="max-w-4xl mx-auto text-indigo-400 stroke-current stroke-0 fill-current my-12 w-11/12">
     <%= render 'svg/map', stops: @stops %>

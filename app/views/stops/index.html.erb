@@ -1,20 +1,30 @@
 <section class="max-w-4xl mx-auto px-4 prose">
-  <% @stops.each do |stop| %>
-   <%= link_to url_for(stop) do %>
-      <%= render 'stops/banner', stop: stop %>
-    <% end %>
+  <h1 class="text-4xl font-semibold font-title">
+    Everywhere we've been
+  </h1>
 
-    <ul>
-      <% stop.posts.in_order.each do |post| %>
-        <li>
-          <div class="text-2xl">
-            <%= link_to post.title, url_for(post) %>
-          </div>
-          <div>
-            <%= post.description %>
-          </div>
-        </li>
+  <h2 class="text-2xl font-semibold">
+    We'd never been to any of these places before. We've got some thoughts on what it was like to visit. Spoiler: mostly fun!
+  </h2>
+
+  <div class="mt-16 border-t-2 border-teal-400">
+    <% @stops.each do |stop| %>
+     <%= link_to url_for(stop) do %>
+        <%= render 'stops/banner', stop: stop %>
       <% end %>
-    </ul>
-  <% end %>
+
+      <ul>
+        <% stop.posts.in_order.each do |post| %>
+          <li>
+            <div class="text-2xl">
+              <%= link_to post.title, url_for(post) %>
+            </div>
+            <div>
+              <%= post.description %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </section>
