@@ -18,6 +18,12 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      plum: "#40252A",
+      brown: '#403B22',
+      sage: "#69731F",
+      sky: "#ABD0BF",
+      foam: "#BDD3B7",
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -236,7 +242,7 @@ module.exports = {
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
-      title: 'Open Sans',
+      title: 'Amatic SC',
     },
     fontSize: {
       xs: '0.75rem',

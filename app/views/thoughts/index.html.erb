@@ -1,15 +1,17 @@
-<section class="max-w-4xl mx-auto px-4 prose">
-  <h1 class="text-4xl font-semibold font-title">
-    We'd love to have something from you to read during our ceremony.
+<section class="max-w-4xl mx-auto">
+  <h1 class="max-w-4xl mx-auto text-6xl font-bold title font-title py-40 text-center text-gray-800">
+    Please send us something for our ceremony!
   </h1>
 
-  <h2 class="text-2xl font-semibold my-6">
-    It's hard to beat a handwritten note. If you've got the time, please mail us a letter. We're leaving on October 8th. Need our address?  <%= link_to "Send us a note", "mailto:hello@trumanshuck.com", class: "text-2xl underline text-teal-400" %> and we'll send it back.
-  </h2>
+  <div class="max-w-4xl mx-auto prose mb-8">
+    <p class="text-lg md:text-2xl">
+      It's hard to beat a handwritten note. If you've got the time, please mail us a letter. We're leaving on October 8th. Need our address?  <%= link_to "Send us a note", "mailto:hello@trumanshuck.com", class: "text-2xl underline text-teal-400" %> and we'll send it back.
+    </p>
 
-  <h2 class="text-2xl font-semibold my-6">
-    If letters aren't your thing, you can write something right here and send it directly.
-  </h2>
+    <p class="text-lg md:text-2xl">
+      If letters aren't your thing, you can write something right here and send it directly.
+    </p>
+  </div>
 
   <%= form_with(model: @thought, local: true) do |form| %>
     <div class="max-w-lg">

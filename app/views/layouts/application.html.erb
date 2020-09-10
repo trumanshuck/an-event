@@ -7,24 +7,30 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Delius&family=Open+Sans&display=swap' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Amatic+SC&family=Open+Sans&family=Delius&display=swap' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <%
+    messages = [
+      "Hasn't this happened already?",
+      "Catballs is extremely pleased."
+    ]
+  %>
   <body class="bg-gray-100">
     <header class="p-6">
-      <nav class="max-w-4xl mx-auto md:flex justify-between px-4 md:py-4 font-title text-center md:text-left">
-        <%= link_to "Carrie & Truman: A Wedding Sojourn", "/", class: "font-title font-bold pb-4 md:pb-0 inline-block" %>
+      <nav class="max-w-4xl mx-auto md:flex justify-between px-4 md:py-4 font-title text-center md:text-left text-2xl">
+        <%= link_to messages.sample, "/", class: "pb-4 md:pb-0 inline-block" %>
         <div class="flex justify-between">
           <%= link_to "Map", "/", class: "mx-2" %>
-          <%= link_to "Stops", stops_url, class: "mx-2" %>
+          <%= link_to "Journal", stops_url, class: "mx-2" %>
           <%= link_to "Registry", registry_index_url, class: "mx-2" %>
-          <%= link_to "Send Your Love", thoughts_url, class: "mx-2" %>
+          <%= link_to "Send Your Love", thoughts_url, class: "ml-2" %>
         </div>
       </nav>
     </header>
 
-    <main class="py-12">
+    <main>
       <%= yield %>
     </main>
   </body>
