@@ -1,22 +1,26 @@
 <section>
-  <div class="max-w-4xl mx-auto px-4 prose">
-    <h1 class="text-4xl font-bold">
-      <%= @messages.sample %>
-    </h1>
-    <h2 class="text-xl md:text-2xl my-6">
-      Follow our trip: <%= link_to @post.title, url_for(@post), class: "underline text-teal-400" %>
-    </h2>
+  <h1 class="text-6xl font-bold hero-lol font-title py-40 text-center text-gray-200">
+    <div>Carrie & Truman</div>
+    <div>are getting married.</div>
+  </h1>
 
-    <p class="text-xl md:text-2xl my-6">
+  <div class="max-w-4xl mx-auto prose my-32">
+    <p class="text-lg md:text-2xl">
       Twenty-twenty marks ten years together, so we're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops above and follow along, or poke around <%= link_to("where we've been", stops_path, class: "text-2xl underline text-teal-400") %>.
     </p>
 
-    <p class="text-xl md:text-2xl my-6">
+    <p class="text-lg md:text-2xl">
       Although we're going it alone, we'd love for you to <%= link_to("share some thoughts", thoughts_path, class: "underline text-teal-400") %> that we can read during our ceremony.  Let's get together and celebrate soon.
     </p>
+  </div>
 
+  <div class="w-screen bg-sky py-8">
+    <h2 class="max-w-4xl mx-auto text-xl md:text-2xl my-6 text-gray-100 text-center">
+      Follow our trip: <%= link_to @post.title, url_for(@post), class: "underline " %>
+    </h2>
 
-  <div class="max-w-4xl mx-auto text-indigo-400 stroke-current stroke-0 fill-current my-12 w-11/12">
-    <%= render 'svg/map', stops: @stops %>
+    <div class="max-w-4xl mx-auto text-plum stroke-current stroke-0 fill-current my-12 w-11/12">
+      <%= render 'svg/map', stops: @stops %>
+    </div>
   </div>
 </section>

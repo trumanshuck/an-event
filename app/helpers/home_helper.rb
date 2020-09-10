@@ -2,8 +2,8 @@ module HomeHelper
   # https://stackoverflow.com/a/14457180
   # plus some magic values
   def laty(lat)
-    width = 320
-    height = 160
+    width = 350
+    height = 170
     lat_rad = lat * Math::PI / 180
     tan = Math.tan((Math::PI / 4) + (lat_rad / 2))
     mercator_n = Math.log(tan, Math::E)
@@ -14,8 +14,8 @@ module HomeHelper
   # https://stackoverflow.com/a/14457180
   # plus some magic values
   def lngx(lng)
-    width = 540.0
-    ((lng + 180.0) * (width / 360.0)) - 74
+    width = 640.0
+    ((lng + 180.0) * (width / 360.0)) - 99
   end
 
   # https://stackoverflow.com/a/31806074
@@ -40,9 +40,9 @@ module HomeHelper
       <path
         d="m #{x1} #{y1} Q #{ex} #{ey} #{x2} #{y2}"
         fill="none"
-        opacity="#{stop.to.future? ? 0.2 : 1}"
+        opacity="#{stop.to.future? ? 0.5 : 1}"
         stroke-dasharray="1,1"
-        class="stroke-current text-indigo-400 stroke-1"
+        class="stroke-current text-gray-100 stroke-1"
       />
     }
   end

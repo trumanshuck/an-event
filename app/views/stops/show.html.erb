@@ -1,34 +1,53 @@
-<main>
-  <h1 class="text-6xl font-title">
-    <%= @stop.name %>
-  </h1>
-  <h2 class="text-4xl font-title">
-    <%= @stop.from.strftime("%B %-d, %Y") %> - <%= @stop.to.strftime("%B %-d, %Y") %>
-  </h2>
-
-  <%= image_tag @stop.splash %>
-
-  <h3 class="text-2xl mt-12">
-    Posts
-  </h3>
-  <ul>
-    <% @stop.posts.in_order.each do |post| %>
-      <li>
-        <div class="text-2xl">
-          <%= link_to post.title, url_for(post) %>
-        </div>
-        <div>
-          <%= post.description %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-  <div class="flex flex-row justify-between mt-12">
+<section>
+  <h1 
+    class="text-6xl font-bold font-title py-40 text-center text-gray-200 bg-no-repeat bg-center bg-cover" 
+    style="background-image: 
+            linear-gradient(
+              rgba(0, 0, 0, 0.45), 
+              rgba(0, 0, 0, 0.45)
+            ),
+            url(<%= url_for(@stop.splash) %>)
+          "
+    >
     <div>
-      <%= link_to_if @prev.present?, @prev&.name, url_for(@prev) %>
+      <%= @stop.name %>
     </div>
-    <div>
-      <%= link_to_if @next.present?, @next&.name, url_for(@next) %>
+    <div class="text-2xl">
+      <%= @stop.from.strftime("%B %-d, %Y") %> - <%= @stop.to.strftime("%B %-d, %Y") %>
+    </div>
+  </h1>
+
+  <div class="max-w-4xl mx-auto prose mt-32 text-lg md:text-2xl">
+    <p>
+      Here's some stuff that we wrote about visiting <%= @stop.name %>.
+    </p> 
+
+    <% @stop.posts.in_order.each do |post| %>
+      <div>
+        <%= link_to post.title, "##{post.slug}" %> - <%= post.created_at.strftime("%B %-d, %Y") %>
+      </div>
+      <div>
+        <%= post.description %>
+      </div>
+    <% end %>
+
+    <div class="flex flex-row justify-between mb-12">
+      <p>
+        <% if @prev.present? %>
+          <%= link_to "Head back to #{@prev.name}", url_for(@prev) %>
+        <% end %>
+      </p>
+      <p>
+        <% if @next.present? %>
+          <%= link_to "Skip forward to #{@next.name}", url_for(@next) %>
+        <% end %>
+      </p>   
     </div>
   </div>
-</main>
+
+  <div class="max-w-4xl mx-auto">
+    <% @stop.posts.in_order.each do |post| %>
+      <%= render "post", post: post %>
+    <% end %>
+  </div>
+</section>

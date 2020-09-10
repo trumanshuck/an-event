@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create!(name: "truman", password: Rails.application.credentials.user_password)
+
 stop_configs = [
   { name: "Chicago Start", lat: 41.8781, lng: -87.6298, image: "chicago.jpeg" },
   { name: "Oklahoma City", lat: 35.4676, lng: -97.5164, image: "okc.jpeg" },
