@@ -31,6 +31,11 @@
     <%= form.collection_select :stop_id, Stop.all, :id, :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

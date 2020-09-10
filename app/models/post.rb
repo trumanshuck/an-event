@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :stop
+  belongs_to :user
   has_rich_text :content
 
   validates :title, :slug, presence: true

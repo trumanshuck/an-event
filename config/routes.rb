@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post 'sessions/create'
   resources :thoughts
   resources :posts
-  resources :stops
+  resources :stops, path: "journal"
   resources :registry, only: [:index]
   root to: 'home#index'
 end

@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
   def authorized
     redirect_to "/" unless logged_in?
   end
+
+  def current_controller?(names)
+    byebug
+    names.include?(current_controller)
+  end
 end
