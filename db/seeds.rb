@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "truman", password: Rails.application.credentials.user_password)
+truman = User.create!(name: "truman", password: Rails.application.credentials.user_password)
+carrie = User.create!(name: "carrie", password: Rails.application.credentials.user_password)
+users = [truman, carrie]
 
 stop_configs = [
   { name: "Chicago Start", lat: 41.8781, lng: -87.6298, image: "chicago.jpeg" },
@@ -47,7 +49,8 @@ stops.each do |stop|
       stop: stop,
       title: "Hey, read this post \##{i} in #{stop.name}",
       description: "Here's a description for stop #{stop.name} post #{i}",
-      slug: "#{stop.name.parameterize}-#{i}"
+      slug: "#{stop.name.parameterize}-#{i}",
+      user: users.sample
     )
 
     post.update!(content: %{

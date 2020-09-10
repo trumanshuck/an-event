@@ -22,10 +22,10 @@
       <nav class="max-w-4xl mx-auto md:flex justify-between px-4 md:py-4 font-title text-center md:text-left text-2xl">
         <%= link_to messages.sample, "/", class: "pb-4 md:pb-0 inline-block" %>
         <div class="flex justify-between">
-          <%= link_to "Map", "/", class: "mx-2" %>
-          <%= link_to "Journal", stops_url, class: "mx-2" %>
-          <%= link_to "Registry", registry_index_url, class: "mx-2" %>
-          <%= link_to "Send Your Love", thoughts_url, class: "ml-2" %>
+          <%= link_to "Map", "/", class: "mx-2 #{'underline' if current_page?(controller: "home")}"  %>
+          <%= link_to "Journal", stops_url, class: "mx-2 #{'underline' if current_page?(controller: "stops")}" %>
+          <%= link_to "Registry", registry_index_url, class: "mx-2 #{'underline' if current_page?(controller: "registry")}" %>
+          <%= link_to "Send Your Love", thoughts_url, class: "mx-2 #{'underline' if current_page?(controller: "thoughts")}" %>
         </div>
       </nav>
     </header>
