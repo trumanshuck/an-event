@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorized, only: [:show, :index]
+  skip_before_action :authorized, only: [:show, :index, :viewed_post]
 
   # GET /posts/1
   # GET /posts/1.json
@@ -16,6 +16,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+  end
+
+  def viewed_post
+    session[:stopslug] = params[:stopslug]
+    session[:postslug] = params[:postslug]
+
+    render json: {}, status: :created
   end
 
   # POST /posts

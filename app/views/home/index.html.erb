@@ -14,6 +14,19 @@
   </h1>
 
   <div class="max-w-4xl mx-auto prose py-20 md:py-32 px-4">
+    <div class="text-lg md:text-2xl text-center font-bold my-20 md:my-32">
+      <div>
+        <% if session[:postslug].present? %>
+          Welcome back! There are <%= @new_posts %> new posts. Here's where you left off:
+        <% else %>
+          Follow our trip here:
+        <% end %>
+      </div>
+      <div>
+        <%= link_to @post.title, polymorphic_url(@post.stop, anchor: @post.slug), class: "underline " %>
+      </div>
+    </div>
+
     <p class="text-lg md:text-2xl">
       Twenty-twenty marks ten years together, so we're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops on the map below to follow along, or poke around <%= link_to("where we've been", stops_path, class: "underline text-teal-400") %>.
     </p>
@@ -26,7 +39,7 @@
       <% if session[:email].present? %>
         We're thrilled that you'd like to receive updates at the following addresses: <%= session[:email].join(", ") %>. Feel free to add another, below.
       <% else %>
-        We're also planning on sending some update emails as we travel. If you'd like to receive them, please add your email below.
+        We're also planning on sending a few update emails as we travel. If you'd like to receive them, please add your email below.
       <% end %>
     </p>
 
@@ -40,10 +53,6 @@
   </div>
 
   <div class="w-screen bg-sky py-8">
-    <h2 class="max-w-4xl mx-auto text-xl md:text-2xl my-6 text-gray-100 text-center">
-      Follow our trip: <%= link_to @post.title, url_for(@post), class: "underline " %>
-    </h2>
-
     <div class="max-w-4xl mx-auto text-plum stroke-current stroke-0 fill-current my-12 w-11/12">
       <%= render 'svg/map', stops: @stops %>
     </div>
