@@ -34,8 +34,6 @@ module HomeHelper
     ex = cx + dy/dd * 5
     ey = cy - dx/dd * 5
 
-
-
     %{
       <path
         d="m #{x1} #{y1} Q #{ex} #{ey} #{x2} #{y2}"
@@ -48,22 +46,23 @@ module HomeHelper
   end
 
   def stop_icon(stop)
-    if stop.name == "Yosemite" && stop.to.future?
-      render 'stop_icons/yosemite', stop: stop
-    elsif stop.name == "Yosemite" && stop.to.past?
+    if stop.name == "Yosemite"
+      return render('stop_icons/yosemite', stop: stop) if stop.from.future?
+
       link_to url_for(stop) do
         render 'stop_icons/yosemite_visited', stop: stop
       end
-    elsif stop.to.past?
+    elsif (stop.to.past? || stop.to.today?) && stop.from.past?
       link_to url_for(stop) do
         render 'stop_icons/visited', stop: stop
       end
-    elsif stop.to.today?
-      link_to url_for(stop) do
-        render 'stop_icons/today', stop: stop
-      end
-    else
+    elsif stop.from.future?
       render 'stop_icons/future', stop: stop
+    else
+      yosemite = Stop.find_by(name: "Yosemite")
+      link_to url_for(stop) do
+        render 'stop_icons/today', stop: stop, flip: (yosemite.to.past? || yosemite.to.today?)
+      end
     end
   end
 end

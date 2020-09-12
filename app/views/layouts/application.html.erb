@@ -9,6 +9,7 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Amatic+SC&family=Open+Sans&family=Delius&display=swap' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'scroll_watcher' %>
   </head>
 
   <%
@@ -18,7 +19,7 @@
     ]
   %>
   <body class="bg-gray-100">
-    <header class="p-6">
+    <header>
       <nav class="max-w-4xl mx-auto md:flex justify-between px-4 md:py-4 font-title text-center md:text-left text-2xl">
         <%= link_to messages.sample, "/", class: "pb-4 md:pb-0 inline-block" %>
         <div class="flex justify-between">

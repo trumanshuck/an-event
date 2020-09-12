@@ -3,6 +3,22 @@ class HomeController < ApplicationController
 
   def index
     @stops = Stop.order(to: :desc)
-    @post = Post.in_order.first
+    @post = recent_post
+    @new_posts = new_posts_after(@post)
+    @email = Email.new
+  end
+
+  private
+
+  def recent_post
+    return Post.in_order.first if session[:stopslug].blank?
+
+    Post.find_by(slug: session[:postslug])
+  end
+
+  def new_posts_after(post)
+    post_arel = Post.arel_table
+
+    Post.where(post_arel[:created_at].gt(post.created_at)).count
   end
 end
