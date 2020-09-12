@@ -25,11 +25,11 @@ stop_configs = [
   { name: "Home Again", lat: 41.8781, lng: -87.6298, image: "chicago.jpeg", from: Date.new(2020, 10, 25), to: Date.new(2021, 3, 31) }
 ]
 
-offset = ENV.fetch("TRIP_OFFSET") { "0" }.to_i.days
+offset = ENV.fetch("TRIP_OFFSET") { "0" }.to_i
 stops = stop_configs.map.with_index do |stop_config, i|
   stop_config.merge!(
-    from: stop_config[:from] - offset,
-    to: stop_config[:to] - offset,
+    from: stop_config[:from] - offset.days,
+    to: stop_config[:to] - offset.days,
     slug: stop_config[:name].parameterize
   )
 
@@ -44,28 +44,30 @@ stops = stop_configs.map.with_index do |stop_config, i|
   stop
 end
 
-stops.each do |stop|
-  rand(1..4).times do |i|
-    post = Post.create!(
-      stop: stop,
-      title: "Hey, read this post \##{i} in #{stop.name}",
-      description: "Here's a description for stop #{stop.name} post #{i}",
-      slug: "#{stop.name.parameterize}-#{i}",
-      user: users.sample
-    )
+if ofset != 0
+  stops.each do |stop|
+    rand(1..4).times do |i|
+      post = Post.create!(
+        stop: stop,
+        title: "Hey, read this post \##{i} in #{stop.name}",
+        description: "Here's a description for stop #{stop.name} post #{i}",
+        slug: "#{stop.name.parameterize}-#{i}",
+        user: users.sample
+      )
 
-    post.update!(content: %{
-        <h1>Hi!</h1>
-        <blockquote>Quote</blockquote>
-        <div>
-          <br>
-          <strong>Bold<br></strong>
-          <em>Italic</em>
-        </div>
-        <ul>
-          <li>one</li><li>two</li><li>three</li>
-        </ul>
-      }
-    )
+      post.update!(content: %{
+          <h1>Hi!</h1>
+          <blockquote>Quote</blockquote>
+          <div>
+            <br>
+            <strong>Bold<br></strong>
+            <em>Italic</em>
+          </div>
+          <ul>
+            <li>one</li><li>two</li><li>three</li>
+          </ul>
+        }
+      )
+    end
   end
 end
