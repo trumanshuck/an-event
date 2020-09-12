@@ -1,9 +1,19 @@
-<section class="max-w-4xl mx-auto px-4">
-  <h1 class="max-w-4xl mx-auto text-5xl md:text-6xl font-bold title font-title py-16 md:py-40 text-center text-gray-800">
-    Please send us something for our ceremony!
+<section>
+  <h1
+    class="text-6xl font-bold font-title py-40 text-center text-gray-200 bg-no-repeat bg-center bg-cover"
+    style="background-image:
+            linear-gradient(
+              rgba(0, 0, 0, 0.45),
+              rgba(0, 0, 0, 0.45)
+            ),
+            url(<%= image_url("cat.jpg") %>)
+          "
+  >
+    <div>Please send us some words</div>
+    <div>to read during our ceremony!</div>
   </h1>
 
-  <div class="max-w-4xl mx-auto prose mb-8">
+  <div class="max-w-4xl mx-auto prose py-20 md:py-32 px-4">
     <p class="text-lg md:text-2xl">
       It's hard to beat a handwritten note. If you've got the time, please mail us a letter. We're leaving on October 8th. Need our address?  <%= link_to "Send us a note", "mailto:hello@trumanshuck.com", class: "underline text-teal-400" %> and we'll send it back.
     </p>
@@ -13,7 +23,7 @@
     </p>
   </div>
 
-  <div class="bg-white px-4 py-12 border-gray-200 rounded shadow">
+  <div class="max-w-4xl mx-auto bg-white px-4 py-12 border-gray-200 rounded shadow">
     <%= form_with(model: @thought, local: true) do |form| %>
       <div class="max-w-lg">
         <%= form.label :your_name, class: "block text-gray-700 text-sm font-bold mb-2" %>
@@ -22,14 +32,16 @@
 
       <div class="my-6">
         <%= form.label :your_message, class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= form.rich_text_area :content %>
+        <%= form.rich_text_area :content, class: "customized-min-height" %>
       </div>
 
       <%= form.submit("Send", class: "bg-indigo-400 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer") %>
     <% end %>
 
-    <div class="my-24">
-      <%= render 'view', thoughts: @thoughts if logged_in? %>
-    </div>
+    <% if logged_in? %>
+      <div class="my-24">
+        <%= render 'view', thoughts: @thoughts %>
+      </div>
+    <% end %>
   </div>
 </section>
