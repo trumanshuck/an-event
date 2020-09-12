@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :posts
   resources :stops, path: "journal"
   resources :registry, only: [:index]
+  resources :emails, only: [:create]
   root to: 'home#index'
 end

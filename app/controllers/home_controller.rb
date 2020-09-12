@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   def index
     @stops = Stop.order(to: :desc)
     @post = Post.in_order.first
+    @email = Email.new
   end
 end

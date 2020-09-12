@@ -42,6 +42,10 @@
       <div class="my-24">
         <%= render 'view', thoughts: @thoughts %>
       </div>
+
+      <div class="my-24">
+        <%= Email.all.map(&:email).join(", ") %>
+      </div>
     <% end %>
   </div>
 </section>

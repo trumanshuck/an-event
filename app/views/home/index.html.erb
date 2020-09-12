@@ -15,12 +15,28 @@
 
   <div class="max-w-4xl mx-auto prose py-20 md:py-32 px-4">
     <p class="text-lg md:text-2xl">
-      Twenty-twenty marks ten years together, so we're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops above and follow along, or poke around <%= link_to("where we've been", stops_path, class: "underline text-teal-400") %>.
+      Twenty-twenty marks ten years together, so we're going on a road trip to get married in Yosemite on October 13th.  We're taking notes, so click the stops on the map below to follow along, or poke around <%= link_to("where we've been", stops_path, class: "underline text-teal-400") %>.
     </p>
 
     <p class="text-lg md:text-2xl">
       Although we're going it alone, we'd love for you to <%= link_to("share some thoughts", thoughts_path, class: "underline text-teal-400") %> that we can read during our ceremony.  Let's get together and celebrate soon.
     </p>
+
+    <p class="text-lg md:text-2xl">
+      <% if session[:email].present? %>
+        We're thrilled that you'd like to receive updates at the following addresses: <%= session[:email].join(", ") %>. Feel free to add another, below.
+      <% else %>
+        We're also planning on sending some update emails as we travel. If you'd like to receive them, please add your email below.
+      <% end %>
+    </p>
+
+    <%= form_with(model: @email, local: true) do |form| %>
+      <div class="flex flex-row items-center content-center justify-center">
+        <%= form.text_field :email, placeholder: "add your email", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-full w-3/6 mr-8" %>
+
+        <%= form.submit("Add", class: "bg-indigo-400 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer h-full") %>
+      </div>
+    <% end %>
   </div>
 
   <div class="w-screen bg-sky py-8">
