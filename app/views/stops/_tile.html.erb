@@ -1,0 +1,24 @@
+<%= image_tag stop.splash, class: "object-cover w-full h-full" %>
+
+<div class="flex flex-col justify-center items-center absolute text-white inset-0 z-auto" style="background-image:
+  linear-gradient(
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.45)
+  )">
+  <span class="text-4xl text-white">
+    <%= stop.name %>
+  </span>
+  <% if stop.from.past? || stop.from.today? %>
+    <span>
+      <%= stop.posts.count %> posts
+    </span>
+
+    <span>
+      <%= stop.from.strftime("%b %-d, %Y") %> - <%= stop.to.strftime("%b %-d, %Y") %>
+    </span>
+  <% else %>
+    <span>
+      Arriving Soon!
+    </span>
+  <% end %>
+</div>

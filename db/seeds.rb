@@ -44,7 +44,7 @@ stops = stop_configs.map.with_index do |stop_config, i|
   stop
 end
 
-if ofset != 0
+if offset != 0
   stops.each do |stop|
     rand(1..4).times do |i|
       post = Post.create!(

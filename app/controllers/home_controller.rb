@@ -17,6 +17,7 @@ class HomeController < ApplicationController
   end
 
   def new_posts_after(post)
+    return 0 if post.blank?
     post_arel = Post.arel_table
 
     Post.where(post_arel[:created_at].gt(post.created_at)).count

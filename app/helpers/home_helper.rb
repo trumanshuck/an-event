@@ -40,7 +40,7 @@ module HomeHelper
         fill="none"
         opacity="#{stop.to.future? ? 0.5 : 1}"
         stroke-dasharray="1,1"
-        class="stroke-current text-gray-100 stroke-1"
+        class="stroke-current text-accent stroke-1"
       />
     }
   end

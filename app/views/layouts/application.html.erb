@@ -12,18 +12,12 @@
     <%= javascript_pack_tag 'scroll_watcher' %>
   </head>
 
-  <%
-    messages = [
-      "Hasn't this happened already?",
-      "Catballs is extremely pleased."
-    ]
-  %>
   <body class="bg-gray-100">
     <header>
       <nav class="max-w-4xl mx-auto md:flex justify-between px-4 md:py-4 font-title text-center md:text-left text-2xl">
-        <%= link_to messages.sample, "/", class: "pb-4 md:pb-0 inline-block" %>
+        <%= link_to "October 13th, 2020", "/", class: "pb-4 md:pb-0 inline-block" %>
         <div class="flex justify-between">
-          <%= link_to "Map", "/", class: "mx-2 #{'underline' if current_page?(controller: "home")}"  %>
+          <%= link_to "Home", "/", class: "mx-2 #{'underline' if current_page?(controller: "home")}"  %>
           <%= link_to "Journal", stops_url, class: "mx-2 #{'underline' if current_page?(controller: "stops")}" %>
           <%= link_to "Registry", registry_index_url, class: "mx-2 #{'underline' if current_page?(controller: "registry")}" %>
           <%= link_to "Send Your Love", thoughts_url, class: "mx-2 #{'underline' if current_page?(controller: "thoughts")}" %>
@@ -34,5 +28,9 @@
     <main>
       <%= yield %>
     </main>
+
+    <footer class="bg-dark p-8">
+      &nbsp;
+    </footer>
   </body>
 </html>
