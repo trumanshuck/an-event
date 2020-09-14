@@ -1,7 +1,10 @@
 <article id="<%= post.slug %>" class="mb-32 post" data-stopslug="<%= post.stop.slug %>" data-postslug="<%= post.slug %>">
-  <div class="text-6xl font-title bg-sky text-gray-100 text-center">
+  <div class="text-6xl font-title bg-dark text-gray-100 text-center">
     <div><%= post.title %></div>
     <div class="text-2xl"><%= post.user.name %> - <%= post.created_at.strftime("%B %-d, %Y") %></div>
+    <% if logged_in? %>
+      <%= link_to("edit", edit_post_path(post)) %>
+    <% end %>
   </div>
 
   <div class="max-w-4xl mx-auto">

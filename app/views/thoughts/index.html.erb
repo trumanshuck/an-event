@@ -6,24 +6,32 @@
               rgba(0, 0, 0, 0.45),
               rgba(0, 0, 0, 0.45)
             ),
-            url(<%= image_url("cat.jpg") %>)
+            url(<%= image_url("sequoia.jpg") %>)
           "
   >
-    <div>Please send us some words</div>
-    <div>to read during our ceremony!</div>
+    <div>Share your words of</div>
+    <div>joy, counsel, or affront</div>
   </h1>
 
-  <div class="max-w-4xl mx-auto prose py-20 md:py-32 px-4">
-    <p class="text-lg md:text-2xl">
-      It's hard to beat a handwritten note. If you've got the time, please mail us a letter. We're leaving on October 8th. Need our address?  <%= link_to "Send us a note", "mailto:hello@trumanshuck.com", class: "underline text-teal-400" %> and we'll send it back.
+  <div class="max-w-4xl mx-auto prose py-12 px-4">
+    <p class="text-2xl md:text-4xl text-center">
+      Please mail us a letter.
     </p>
 
-    <p class="text-lg md:text-2xl">
-      If letters aren't your thing, you can write something right here and send it directly.
+    <p class="text-xl">
+      We'd love to read a note from you on our wedding day. Please write some joyful, wise, or silly words and send them in the mail -- we leave October 8th. Need our address?  <%= link_to "Send us a note", "mailto:hello@trumanshuck.com", class: "underline text-teal-400" %> and we'll send it back.
+    </p>
+
+    <p class="text-2xl md:text-4xl text-center">
+      Or...
+    </p>
+
+    <p class="text-xl">
+      It's hard to beat a handwritten note, but if letters aren't your thing you can write something below.
     </p>
   </div>
 
-  <div class="max-w-4xl mx-auto bg-white px-4 py-12 border-gray-200 rounded shadow">
+  <div class="max-w-4xl mx-auto bg-white px-4 py-12 mb-12 border-gray-200 rounded shadow">
     <%= form_with(model: @thought, local: true) do |form| %>
       <div class="max-w-lg">
         <%= form.label :your_name, class: "block text-gray-700 text-sm font-bold mb-2" %>
@@ -35,7 +43,9 @@
         <%= form.rich_text_area :content, class: "customized-min-height" %>
       </div>
 
-      <%= form.submit("Send", class: "bg-indigo-400 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer") %>
+      <div class="text-right">
+        <%= form.submit("Send", class: "bg-accent hover:bg-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer") %>
+      </div>
     <% end %>
 
     <% if logged_in? %>
