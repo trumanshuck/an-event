@@ -46,8 +46,8 @@
   </div>
 
   <div class="max-w-4xl mx-auto">
-    <% @stop.posts.in_order.each do |post| %>
-      <%= render "post", post: post %>
+    <% @stop.posts.in_order.each.with_index do |post, idx| %>
+      <%= render "post", post: post, idx: idx %>
     <% end %>
   </div>
 

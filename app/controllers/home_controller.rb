@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   private
 
   def recent_post
-    return Post.in_order.first if session[:stopslug].blank?
+    return Post.in_order.first if session[:postslug].blank?
 
     Post.find_by(slug: session[:postslug])
   end

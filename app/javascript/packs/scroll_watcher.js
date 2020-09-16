@@ -1,6 +1,6 @@
 let ticking = false;
-let stopslug = null;
 let postslug = null;
+let lastIdx = 0;
 
 function notifyScroll() {
   if (ticking) {
@@ -21,13 +21,14 @@ function notifyScroll() {
     return closest
   }, null)
 
-  if (stopslug === topPost.dataset.stopslug && postslug === topPost.dataset.postslug) {
+  const idx = Number(topPost.dataset.idx)
+  if (postslug === topPost.dataset.postslug || idx < lastIdx) {
     ticking = false
     return
   }
 
-  stopslug = topPost.dataset.stopslug
   postslug = topPost.dataset.postslug
+  lastIdx = idx
 
   const token = document.getElementsByName(
     "csrf-token"
@@ -42,7 +43,7 @@ function notifyScroll() {
       'Content-Type': 'application/json',
       'X-CSRF-Token': token
     },
-    body: JSON.stringify({ stopslug, postslug })
+    body: JSON.stringify({ postslug })
   }).then(() => {
     ticking = false
   }).finally(() => {
