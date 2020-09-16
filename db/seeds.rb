@@ -19,7 +19,7 @@ stop_configs = [
   { name: "Sequoia", lat: 36.4864, lng: -118.5658, image: "sequoia.jpeg", from: Date.new(2020, 10, 14), to: Date.new(2020, 10, 16) },
   { name: "Death Valley", lat: 36.5323, lng: -116.9325, image: "death-valley.jpeg", from: Date.new(2020, 10, 16), to: Date.new(2020, 10, 18) },
   { name: "Grand Canyon", lat: 36.0544, lng: -112.1401, image: "grand-canyon.jpeg", from: Date.new(2020, 10, 18), to: Date.new(2020, 10, 22) },
-  { name: "Santa Fe", lat: 35.6870, lng: -105.9378, image: "santa-fe.jpeg", from: Date.new(2020, 10, 22), to: Date.new(2020, 10, 23) },
+  { name: "Santa Fe Part II", lat: 35.6870, lng: -105.9378, image: "santa-fe.jpeg", from: Date.new(2020, 10, 22), to: Date.new(2020, 10, 23) },
   { name: "Tulsa", lat: 36.1540, lng: -95.9928, image: "tulsa.jpeg", from: Date.new(2020, 10, 23), to: Date.new(2020, 10, 24) },
   { name: "St Louis", lat: 38.6270, lng: -90.1994, image: "st-louis.jpeg", from: Date.new(2020, 10, 24), to: Date.new(2020, 10, 25) },
   { name: "Home Again", lat: 41.8781, lng: -87.6298, image: "chicago.jpeg", from: Date.new(2020, 10, 25), to: Date.new(2021, 3, 31) }
