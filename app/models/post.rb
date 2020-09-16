@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_rich_text :content
 
   validates :title, :slug, presence: true
+  validates :slug, uniqueness: true
 
   delegate :to_param, to: :slug
 

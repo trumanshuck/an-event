@@ -36,11 +36,11 @@
       <% @stops.each do |stop| %>
         <% if stop.from.past? || stop.from.today? %>
           <%= link_to url_for(stop), class: "flex relative block justify-center items-center" do %>
-            <%= render 'stops/tile', stop: stop %>
+            <%= render 'stops/tile', stop: stop, past: true %>
           <% end %>
         <% else %>
           <div class="flex relative block justify-center items-center">
-            <%= render 'stops/tile', stop: stop %>
+            <%= render 'stops/tile', stop: stop, past: false %>
           </div>
         <% end %>
       <% end %>

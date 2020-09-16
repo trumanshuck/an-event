@@ -3,6 +3,7 @@ class Stop < ApplicationRecord
   has_many :posts
 
   validates :name, :from, :to, :lat, :lng, :slug, presence: true
+  validates :slug, uniqueness: true
 
   delegate :to_param, to: :slug
 

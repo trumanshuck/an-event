@@ -19,7 +19,6 @@ class PostsController < ApplicationController
   end
 
   def viewed_post
-    session[:stopslug] = params[:stopslug]
     session[:postslug] = params[:postslug]
 
     render json: {}, status: :created

@@ -5,13 +5,14 @@ class HomeController < ApplicationController
     @stops = Stop.order(to: :desc)
     @post = recent_post
     @new_posts = new_posts_after(@post)
+    @most_recent = Post.order(created_at: :desc).first
     @email = Email.new
   end
 
   private
 
   def recent_post
-    return Post.in_order.first if session[:stopslug].blank?
+    return Post.in_order.first if session[:postslug].blank?
 
     Post.find_by(slug: session[:postslug])
   end
