@@ -19,7 +19,7 @@
           Welcome back!
       </div>
       <div class="text-lg prose text-center w-full max-w-full text-gray-900">
-        There are <%= @new_posts %> new posts. Here's where you left off: <%= link_to @post.title, polymorphic_url(@post.stop, anchor: @post.slug), class: "underline text-gray-200" %>.  Or read the most recent.
+        There are <%= @new_posts %> new posts. Here's where you left off: <%= link_to @post.title, polymorphic_url(@post.stop, anchor: @post.slug), class: "underline text-gray-200" %>.  Or read the <%= link_to "most recent", polymorphic_url(@most_recent&.stop, anchor: @most_recent&.slug), class: "underline text-gray-200" %>.
       </div>
     </div>
   <% end %>

@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @stops = Stop.order(to: :desc)
     @post = recent_post
     @new_posts = new_posts_after(@post)
+    @most_recent = Post.order(created_at: :desc).first
     @email = Email.new
   end
 
