@@ -1,5 +1,7 @@
 # An Event
 
+Carrie and Truman's elopement roadtrip.  Please do not read the (lack of) test coverage or awful git history as an indictment of my professional software process.
+
 ## The Things We Must Have
 
 1. [rbenv](https://github.com/rbenv/rbenv)
