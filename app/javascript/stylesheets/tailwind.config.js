@@ -236,11 +236,12 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        'Open Sans',
+        'Rubik',
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
       title: 'Amatic SC',
+      heading: 'Syne',
     },
     fontSize: {
       xs: '0.75rem',

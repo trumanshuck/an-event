@@ -7,14 +7,14 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Amatic+SC&family=Open+Sans&family=Delius&display=swap' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Amatic+SC&family=Syne&family=Rubik&display=swap' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'scroll_watcher' %>
   </head>
 
   <body class="bg-gray-100">
     <header>
-      <nav class="max-w-4xl mx-auto md:flex justify-between px-4 md:py-4 font-title text-center md:text-left text-2xl">
+      <nav class="max-w-4xl mx-auto md:flex justify-between px-4 md:py-4 font-heading text-center md:text-left text-xl">
         <%= link_to "October 13th, 2020", "/", class: "pb-4 md:pb-0 inline-block" %>
         <div class="flex justify-between">
           <%= link_to "Home", "/", class: "mx-2 #{'underline' if current_page?(controller: "home")}"  %>
