@@ -6,6 +6,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts.json
   def index
     @thoughts = Thought.all
+    @public_thoughts = @thoughts.where(public: true).order(created_at: :desc)
     @thought = Thought.new
   end
 
@@ -30,9 +31,9 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to thoughts_url, notice: 'Thought was successfully created.' }
+        format.html { redirect_to thoughts_url, notice: "ok" }
       else
-        format.html { render :index }
+        format.html { redirect_to thoughts_url, notice: "err" }
       end
     end
   end
@@ -69,6 +70,6 @@ class ThoughtsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def thought_params
-      params.require(:thought).permit(:name, :content)
+      params.require(:thought).permit(:name, :content, :public)
     end
 end
