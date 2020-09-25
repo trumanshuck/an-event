@@ -2,8 +2,8 @@ module HomeHelper
   # https://stackoverflow.com/a/14457180
   # plus some magic values
   def laty(lat)
-    width = 350
-    height = 170
+    width = 580
+    height = 230
     lat_rad = lat * Math::PI / 180
     tan = Math.tan((Math::PI / 4) + (lat_rad / 2))
     mercator_n = Math.log(tan, Math::E)
