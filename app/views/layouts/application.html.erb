@@ -20,8 +20,8 @@
         <div class="flex justify-between">
           <%= link_to "Home", "/", class: "mx-2 #{'underline' if current_page?(controller: "home")}"  %>
           <%= link_to "Journal", stops_url, class: "mx-2 #{'underline' if current_page?(controller: "stops")}" %>
-          <%= link_to "Registry", registry_index_url, class: "mx-2 #{'underline' if current_page?(controller: "registry")}" %>
           <%= link_to "Send Your Love", thoughts_url, class: "mx-2 #{'underline' if current_page?(controller: "thoughts")}" %>
+          <%= link_to "Photos", "https://photos.carrie-truman.fyi", class: "mx-2", target: "_blank" %>
         </div>
       </nav>
     </header>

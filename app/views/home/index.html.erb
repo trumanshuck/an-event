@@ -10,7 +10,7 @@
           "
   >
     <div>Carrie & Truman</div>
-    <div>are getting married.</div>
+    <div>are married.</div>
   </h1>
 
   <% if session[:postslug].present? %>
@@ -26,40 +26,20 @@
 
   <div class="max-w-4xl mx-auto prose py-12 px-4">
     <p class="text-2xl md:text-4xl text-center font-heading">
-      Catballs is delighted.
+       we did it - oh we did it - oh we did it - oh we did it
     </p>
 
     <p class="text-xl">
-      Hello dear family & friends, because the love you've shared with us is part of what makes us "us," we are excited to share that we are finally getting married after ten years together.
+      Catballs is still delighted -- mostly because he's once again within arm's reach to be pet on his small orange head.  We, however, are delighted to announce that we made it!  We travelled all of the way to Yosemite National Park and were married at sunrise on Inspriation Point on October 13th 2020.
     </p>
 
     <p class="text-xl">
-      We're embarking on a cross-country road trip to see some animals, many tall trees, huge rocks -- and elope among the natural splendor out west. On October 13th, 2020, we'll say our vows at Yosemite National Park.
-    </p>
-
-    <p class="text-2xl md:text-4xl text-center font-heading">
-      Your presence will be missed.
+      We saw some animals, many tall trees, and a couple of huge rocks. And now we've got more pictures so that you can see as well.  <%= link_to "Check it out!", "https://photos.carrie-truman.fyi", target: "_blank" %>
     </p>
 
     <p class="text-xl">
-       We would love for you to <%= link_to("send us a note", thoughts_path, class: "underline text-teal-400") %> that we can read on our wedding day. We also invite you to <%= link_to("follow along", stops_path, class: "underline text-teal-400") %> as we document our journey.
+      The love you've shared with us is part of what makes us "us," and your support has made our trip possible. Thank you all for following along.
     </p>
-
-    <p class="text-xl">
-      <% if session[:email].present? %>
-        We're thrilled that you'd like to receive updates at the following addresses: <%= session[:email].join(", ") %>. Feel free to add another, below.
-      <% else %>
-        We'll let you know when photos are available, and we'll be sending a few updates as we travel. If you'd like to be notified, please add your email below.
-      <% end %>
-    </p>
-
-    <%= form_with(model: @email, local: true) do |form| %>
-      <div class="flex flex-row items-center content-center justify-center">
-        <%= form.text_field :email, placeholder: "add your email", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-full w-3/6 mr-8" %>
-
-        <%= form.submit("Add", class: "bg-dark hover:bg-accent text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer h-full") %>
-      </div>
-    <% end %>
 
     <p class="text-2xl md:text-4xl text-center font-heading">
       We look forward to celebrating with you someday.
