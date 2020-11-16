@@ -13,75 +13,18 @@
     <div>joy, counsel, or affront</div>
   </h1>
 
-  <% if flash[:notice] == "ok" %>
-    <div class="max-w-4xl mx-auto prose py-12 px-4">
-      <p class="text-2xl md:text-4xl text-center font-heading">
-        Hey, thanks!
-      </p>
-      <p class="text-xl">
-        We're looking forward to reading what you wrote. In the meantime, feel free to <%= link_to "see what other folks have said", thoughts_url(anchor: "other-thoughts") %>.
-      </p>
-    </div>
-  <% elsif flash[:notice] == "err" %>
-    <div class="max-w-4xl mx-auto prose py-12 px-4">
-      <p class="text-2xl md:text-4xl text-center font-heading">
-        Whoops, something went wrong.
-      </p>
-      <p class="text-xl">
-        Go ahead and <%= link_to "refresh", thoughts_url %>.
-      </p>
-    </div>
-  <% else %>
-    <div class="max-w-4xl mx-auto prose py-12 px-4">
-      <p class="text-2xl md:text-4xl text-center font-heading">
-        Please mail us a letter.
-      </p>
 
-      <p class="text-xl">
-        We'd love to read a note from you on our wedding day. Please write some joyful, wise, or silly words and send them in the mail -- we leave October 8th. Need our address?  <%= link_to "Email us", "mailto:hello@trumanshuck.com", class: "underline text-teal-400" %> and we'll send it back.
-      </p>
-
-      <p class="text-2xl md:text-4xl text-center font-heading">
-        Or...
-      </p>
-
-      <p class="text-xl">
-        It's hard to beat a handwritten note, but if letters aren't your thing you can write something below.
-      </p>
-    </div>
-
-    <div class="max-w-4xl mx-auto bg-white px-4 py-12 mb-12 border-gray-200 rounded shadow">
-      <%= form_with(model: @thought, local: true) do |form| %>
-        <div class="max-w-lg">
-          <%= form.label :your_name, class: "block text-gray-700 text-xl font-bold mb-2" %>
-          <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-        </div>
-
-        <div class="my-6">
-          <%= form.label :message, "Your message (from your heart, or gut, or from your cat, or ...)", class: "block text-gray-700 text-xl font-bold mb-2" %>
-          <%= form.rich_text_area :content, class: "customized-min-height" %>
-        </div>
-
-        <div class="my-6 flex items-center">
-          <%= form.label :public, "", class: "block text-gray-700 text-xl font-bold" do %>
-            <%= form.check_box :public, { class: "mr-2" }, "yes" %>
-            Allow other folks to see what you write (below)
-          <% end %>
-        </div>
-
-        <div>
-          <%= form.submit("Send to Carrie & Truman", class: "bg-dark hover:bg-accent text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer w-full") %>
-        </div>
-      <% end %>
-    </div>
-
+  <div class="max-w-4xl mx-auto py-12">
     <p id="other-thoughts" class="text-2xl md:text-4xl text-center font-heading mb-2">
-      Kind words from other folks
+      Kind words from wonderful folks
     </p>
 
+    <p class="text-xl py-12">
+      Thank you all for your kind, inspiring, joyful words. We loved reading each note and felt like we were able to carry everyone with us while we journeyed across the country. Your thoughts are archived here; we look back on them fondly.
+    </p>
 
     <% @public_thoughts.each do |thought| %>
-      <div class="max-w-4xl mx-auto bg-white px-4 py-12 mb-12">
+      <div class="bg-white px-4 py-12 mb-12">
         <p class="text-xl mb-2">
           From: <%= thought.name %>
         </p>
@@ -90,17 +33,5 @@
         </div>
       </div>
     <% end %>
-
-    <div class="max-w-4xl mx-auto bg-white">
-      <% if logged_in? %>
-        <div class="my-24">
-          <%= render 'view', thoughts: @thoughts %>
-        </div>
-
-        <div class="my-24">
-          <%= Email.all.map(&:email).join(", ") %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
 </section>
